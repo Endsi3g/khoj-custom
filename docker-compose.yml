@@ -45,7 +45,7 @@ services:
     image: ghcr.io/khoj-ai/khoj:latest
     # Uncomment the following line to build from source. This will take a few minutes. Comment the next two lines out if you want to use the official image.
     # build:
-      # context: .
+    # context: .
     ports:
       # If changing the local port (left hand side), no other changes required.
       # If changing the remote port (right hand side),
@@ -80,8 +80,8 @@ services:
       - KHOJ_SEARXNG_URL=http://search:8080
       # Uncomment line below to use with Ollama running on your local machine at localhost:11434.
       # Change URL to use with other OpenAI API compatible providers like VLLM, LMStudio, DeepInfra, DeepSeek etc.
-      # - OPENAI_BASE_URL=http://host.docker.internal:11434/v1/
-      # - KHOJ_DEFAULT_CHAT_MODEL=qwen3
+      - OPENAI_BASE_URL=http://host.docker.internal:11434/v1/
+      - KHOJ_DEFAULT_CHAT_MODEL=llama3
       #
       # Uncomment appropriate lines below to use chat models by OpenAI, Anthropic, Google.
       # Ensure you set your provider specific API keys.
