@@ -13,6 +13,11 @@ export const metadata: Metadata = {
         icon: "/static/assets/icons/khoj_lantern.ico",
         apple: "/static/assets/icons/khoj_lantern_256x256.png",
     },
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "default",
+        title: "Khoj AI",
+    },
     manifest: "/static/khoj.webmanifest",
     keywords:
         "research assistant, productivity, AI, Khoj, open source, model agnostic, research, productivity tool, personal assistant, personal research assistant, personal productivity assistant",

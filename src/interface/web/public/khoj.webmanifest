@@ -3,6 +3,8 @@
     "name": "Khoj AI - Get Answers, Create Anything",
     "short_name": "Khoj",
     "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
     "start_url": "/",
     "scope": "/",
     "description": "Khoj is your open, personal AI. Gets answers from the internet and your documents. Quickly draft messages, summarize any information, generate beautiful paintings, create personal agents and do deep research.",
