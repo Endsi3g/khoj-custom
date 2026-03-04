@@ -105,6 +105,42 @@ If you want to use local models on your cloud instance:
 2. In your `docker-compose.yml`, ensure the `OPENAI_BASE_URL` is set to `http://host.docker.internal:11434/v1/`.
 3. Ensure Docker can reach the host network (often enabled by default or requires adding `extra_hosts` to the service).
 
-## 6. Verification
+## 7. 100% Free Deployment Options
 
-Access your instance at `https://khoj.yourdomain.com`. You should see the Khoj login page or the chat interface if anonymous mode is enabled.
+If you don't want to pay for a cloud VM, here are the best free alternatives:
+
+### Oracle Cloud "Always Free" (Best for LLMs)
+Oracle offers the most generous free tier for running local models:
+- **Instance**: ARM Ampere A1.
+- **Resources**: Up to **4 OCPUs** and **24 GB of RAM**.
+- **Setup**: Follow the standard [Server Setup](#2-server-setup) steps on an Ubuntu ARM instance.
+
+### Cloudflare Tunnel (Free Public Access)
+Expose your home computer to the internet for free, securely, without opening router ports:
+1. Install `cloudflared` on your local machine.
+2. Run `cloudflared tunnel --url http://localhost:42110`.
+3. Use the generated `.trycloudflare.com` URL to access Khoj from anywhere (including your phone).
+
+---
+
+## 8. Mobile & Remote Access Troubleshooting
+
+If you can't access Khoj on your phone while it's running on your computer:
+
+### 1. Check your IP Address
+You cannot use `localhost` or `127.0.0.1` on your phone. You must use the **Local IP** of your computer (e.g., `192.168.1.50`).
+- **Windows**: Run `ipconfig` in PowerShell.
+- **Mac/Linux**: Run `hostname -I` or `ifconfig`.
+
+### 2. Configure Environment Variables
+In your `docker-compose.yml`, you **must** set:
+- `KHOJ_DOMAIN=192.168.x.x` (Your local IP).
+- `KHOJ_NO_HTTPS=True` (If accessing over local network without SSL).
+
+### 3. Open Firewall Ports
+Your computer's firewall might be blocking the connection:
+- **Windows**: Search for "Advanced Security Firewall" -> Inbound Rules -> New Rule -> Port -> TCP 42110 -> Allow.
+- **Linux (ufw)**: `sudo ufw allow 42110/tcp`.
+
+### 4. Verify Same Network
+Ensure your phone is connected to the same Wi-Fi as your computer. If they are on different networks (e.g., phone on 4G/5G), use the [Cloudflare Tunnel](#cloudflare-tunnel-free-public-access) method above.
